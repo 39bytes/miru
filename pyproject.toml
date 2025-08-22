@@ -1,0 +1,14 @@
+[project]
+name = "miru"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.3.2",
+    "paddleocr>=3.2.0",
+    "paddlepaddle>=3.1.1",
+    "pillow>=11.3.0",
+    "pyperclip>=1.9.0",
+    "rich>=14.1.0",
+]
