@@ -35,16 +35,18 @@ def get_text(ocr_results) -> str:
 
 
 def main():
+    console = Console()
+
+    console.print("[*] Initializing PaddleOCR model", style="bold cyan")
     ocr = PaddleOCR(
         use_doc_orientation_classify=False,
         use_doc_unwarping=False,
         use_textline_orientation=False,
     )
-    console = Console()
 
     prev_img = None
 
-    console.print("Polling images from clipboard", style="bold cyan")
+    console.print("[*] Polling images from clipboard", style="bold cyan")
     while True:
         img = poll_image_from_clipboard()
         if img is None or img == prev_img:
@@ -56,7 +58,9 @@ def main():
 
         result = ocr.predict(np.array(img))
         text = get_text(result)
-        console.print(f"Recognized text (written to clipboard): {text}", style="green")
+        console.print(
+            f"[*] Recognized text (written to clipboard): {text}", style="green"
+        )
         pyperclip.copy(text)
 
 
